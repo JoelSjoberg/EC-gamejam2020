@@ -61,8 +61,6 @@ public class PlayerController : MonoBehaviour
         }
 
         ConsumeFuelIfNeeded();
-
-        Debug.Log(fuel);
     }
 
     void FixedUpdate()
