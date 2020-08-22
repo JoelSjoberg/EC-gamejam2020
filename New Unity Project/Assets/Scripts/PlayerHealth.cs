@@ -13,28 +13,36 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) 
     {
-        if (other.gameObject.tag == "Dangerous") {
+        if (other.gameObject.tag == "Dangerous")
+        {
+            ResetToStart();
+        }
+    }
 
-            Debug.Log("Touched DANGER!!!");
-            GameStats.hp -= 1;
-            
-            // Dead if hp <= 0
-            if (GameStats.hp <= 0) 
-            {
-                // redirect to game over
-            }
-            else 
-            {
-                // Return player to start
-                transform.position = startpos;
-                GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+    private void ResetToStart()
+    {
+        Debug.Log("Touched DANGER!!!");
+        GameStats.hp -= 1;
 
-            }
+        // Dead if hp <= 0
+        if (GameStats.hp <= 0)
+        {
+            // redirect to game over
+        }
+        else
+        {
+            // Return player to start
+            transform.position = startpos;
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
+        if (other.transform.tag == "Dangerous") { // Some are only triggers, such as black holes
+            ResetToStart();
+        }
+
         if (other.transform.tag == "Checkpoint") 
         {
             Debug.Log("Checkpoint!");
