@@ -14,6 +14,12 @@ public class PlayerController : MonoBehaviour
 
     float drag, boostDrag;
 
+    float accelerationStartTime;
+
+    public int fuelConsumptionAmount = 1;
+    int fuelConsumptionAmountInBoost;
+    int fuel; // Should be visible in UI somewhere maybe
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,20 +28,41 @@ public class PlayerController : MonoBehaviour
         speedBeforeBoost = maxSpeed;
         drag = rb.drag;
         boostDrag = drag / 4.0f;
+        fuelConsumptionAmountInBoost = fuelConsumptionAmount * 2;
+        fuel = GameStats.fuel;
+    }
+
+    void ConsumeFuelIfNeeded()
+    {
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        {
+            bool shouldConsumeFuel = Time.time - accelerationStartTime > 0.5;
+            if (shouldConsumeFuel)
+            {
+                fuel -= Input.GetKey(KeyCode.LeftShift) ? fuelConsumptionAmountInBoost : fuelConsumptionAmount;
+                accelerationStartTime = Time.time;
+            }
+        }
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
+            accelerationStartTime = Time.time;
             maxSpeed = maxBoostSpeed;
             rb.drag = boostDrag;
         }
+
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             maxSpeed = speedBeforeBoost;
             rb.drag = drag;
-        }   
+        }
+
+        ConsumeFuelIfNeeded();
+
+        Debug.Log(fuel);
     }
 
     void FixedUpdate()
