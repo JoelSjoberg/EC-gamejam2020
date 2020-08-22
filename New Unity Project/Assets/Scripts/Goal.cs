@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Goal : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision other) {
+    public string nextLevel = "";
+
+    private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.tag == "Player") 
         {
-            // Load next level
-            // or end screen if last level
+            SceneManager.LoadScene(nextLevel);
         }
     }
 }
