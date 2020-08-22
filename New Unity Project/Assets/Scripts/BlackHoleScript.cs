@@ -9,11 +9,15 @@ public class BlackHoleScript : MonoBehaviour
 {
     float gconst = 6.674e-11f; // From wikipedia
     public float mass; // This mass is only used for calculation of gravitational acceleration and not actually in physics
+    public float orbitingSpeed = 20; // Angles per second
+
+
+    public List<GameObject> orbiters;
 
     // Start is called before the first frame update
     void Start()
     {
-        mass = 1e10f; // With this you can still escape and "wrap around" the black hole
+        mass = 1e13f; // With this you can still escape and "wrap around" the black hole
     }
 
     void OnTriggerStay2D(Collider2D collider2D) {
@@ -31,5 +35,12 @@ public class BlackHoleScript : MonoBehaviour
         float f = gconst * (mass * collider2D.attachedRigidbody.mass) / r;
 
         collider2D.attachedRigidbody.velocity += dist.normalized * f * Time.deltaTime;
+    }
+
+    void Update()
+    {
+        foreach (var orb in orbiters) {
+            orb.transform.RotateAround(transform.position, new Vector3(0, 0, 1), orbitingSpeed * Time.deltaTime);
+        }
     }
 }
