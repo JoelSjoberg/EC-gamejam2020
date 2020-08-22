@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
 
     float drag, boostDrag;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,16 +22,6 @@ public class PlayerController : MonoBehaviour
         speedBeforeBoost = maxSpeed;
         drag = rb.drag;
         boostDrag = drag / 4.0f;
-    }
-
-    void OnTriggerEnter2D(Collider2D collision) 
-    {
-        Debug.Log(collision.transform.name);
-    }
-
-    void OnCollisionEnter2D(Collision2D collision) 
-    {
-        Debug.Log(collision.transform.name);
     }
 
     void Update()
@@ -50,7 +40,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.AddForce(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized * acceleration);
+        rb.AddForce(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized * acceleration);
         
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
 
