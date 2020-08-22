@@ -4,20 +4,56 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    
-    
     Rigidbody2D rb;
-    Vector2 acceleration, velocity;
+    Vector2 velocity;
+    public float maxSpeed;
+    float speedBeforeBoost;
+    float maxBoostSpeed;
+    public float acceleration;
+    public float speed;
+
+    float drag, boostDrag;
     
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        maxBoostSpeed = maxSpeed * 2;
+        speedBeforeBoost = maxSpeed;
+        drag = rb.drag;
+        boostDrag = drag / 4.0f;
     }
 
-    // Update is called once per frame
+    void OnTriggerEnter2D(Collider2D collision) 
+    {
+        Debug.Log(collision.transform.name);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision) 
+    {
+        Debug.Log(collision.transform.name);
+    }
+
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            maxSpeed = maxBoostSpeed;
+            rb.drag = boostDrag;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            maxSpeed = speedBeforeBoost;
+            rb.drag = drag;
+        }   
+    }
 
+    void FixedUpdate()
+    {
+        rb.AddForce(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized * acceleration);
+        
+        rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
+
+        speed = rb.velocity.magnitude;
     }
 }
