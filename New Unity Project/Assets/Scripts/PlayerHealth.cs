@@ -7,8 +7,34 @@ public class PlayerHealth : MonoBehaviour
 
     Vector2 startpos;
 
+
+    // Things needed for the player to lerp back to starting position
+    bool movingBack = false;
+    float deathTime;
+    Vector3 deadPosition;
+    float journeyLength;
+    public float lerpSpeed;
+
     private void Start() {
         startpos = transform.position;
+    }
+
+    private void Update()
+    {
+        // https://docs.unity3d.com/ScriptReference/Vector3.Lerp.html
+        if (movingBack) { 
+            float distCovered = (Time.time - deathTime) * lerpSpeed;
+            float fractionJourney = distCovered / journeyLength;
+
+            transform.position = Vector3.Lerp(deadPosition, startpos, fractionJourney);
+
+            bool backAtStart = Mathf.Approximately(transform.position.x, startpos.x) && 
+                               Mathf.Approximately(transform.position.y, startpos.y);
+            if (backAtStart) {
+                movingBack = false;
+                GetComponent<Rigidbody2D>().isKinematic = false;
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other) 
@@ -31,8 +57,12 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             // Return player to start
-            transform.position = startpos;
+            movingBack = true;
+            deathTime = Time.time;
+            deadPosition = transform.position;
+            journeyLength = (transform.position - new Vector3(startpos.x, startpos.y, 0)).magnitude;
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            GetComponent<Rigidbody2D>().isKinematic = true;
         }
     }
 
