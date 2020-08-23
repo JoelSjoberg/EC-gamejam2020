@@ -14,9 +14,13 @@ public class PlayerHealth : MonoBehaviour
     Vector3 deadPosition;
     float journeyLength;
     public float lerpSpeed;
+    BoxCollider2D collider;
+    Rigidbody2D rb;
 
     private void Start() {
         startpos = transform.position;
+        rb = GetComponent<Rigidbody2D>();
+        collider = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -32,7 +36,8 @@ public class PlayerHealth : MonoBehaviour
                                Mathf.Approximately(transform.position.y, startpos.y);
             if (backAtStart) {
                 movingBack = false;
-                GetComponent<Rigidbody2D>().isKinematic = false;
+                rb.isKinematic = false;
+                collider.isTrigger = false;
             }
         }
     }
@@ -61,8 +66,9 @@ public class PlayerHealth : MonoBehaviour
             deathTime = Time.time;
             deadPosition = transform.position;
             journeyLength = (transform.position - new Vector3(startpos.x, startpos.y, 0)).magnitude;
-            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            GetComponent<Rigidbody2D>().isKinematic = true;
+            rb.velocity = Vector2.zero;
+            rb.isKinematic = true;
+            collider.isTrigger = true; // Just to avoid some collisions
         }
     }
 

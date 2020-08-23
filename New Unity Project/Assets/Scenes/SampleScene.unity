@@ -5882,13 +5882,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 355064054278267705, guid: c7a224003dc807d41be66812f7683e9d, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4194994249991188873, guid: c7a224003dc807d41be66812f7683e9d, type: 3}
       propertyPath: m_Name
       value: BlackHole
       objectReference: {fileID: 0}
     - target: {fileID: 4194994249991188873, guid: c7a224003dc807d41be66812f7683e9d, type: 3}
       propertyPath: m_TagString
-      value: Dangerous
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4194994249991188876, guid: c7a224003dc807d41be66812f7683e9d, type: 3}
       propertyPath: m_LocalPosition.x
