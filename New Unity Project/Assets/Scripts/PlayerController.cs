@@ -18,9 +18,8 @@ public class PlayerController : MonoBehaviour
 
     public int fuelConsumptionAmount = 1;
     int fuelConsumptionAmountInBoost;
-    int fuel; // Should be visible in UI somewhere maybe
-
-    // Start is called before the first frame update
+    int fuel; 
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -43,6 +42,11 @@ public class PlayerController : MonoBehaviour
                 accelerationStartTime = Time.time;
             }
         }
+    }
+
+    public int GetFuel()
+    {
+        return fuel;
     }
 
     void Update()
