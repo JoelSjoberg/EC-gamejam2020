@@ -18,6 +18,6 @@ public class FuelScriptUI : MonoBehaviour
     // This is not nice. Now this is updated many times even though not changing. 
     public void Update()
     {
-        fuelString.text = player.GetComponent<PlayerController>().GetFuel().ToString(); // ugly
+        fuelString.text = GameStats.fuel.ToString();
     }
 }

@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     public int fuelConsumptionAmount = 1;
     int fuelConsumptionAmountInBoost;
-    public int fuel; 
+    public int startingFuel;
     
     [SerializeField]
     ParticleSystem particles;
@@ -32,9 +32,8 @@ public class PlayerController : MonoBehaviour
         drag = rb.drag;
         boostDrag = drag / 4.0f;
         fuelConsumptionAmountInBoost = fuelConsumptionAmount * 2;
-        fuel = GameStats.fuel;
         particles.gameObject.SetActive(false);
-        
+        GameStats.fuel = startingFuel;
     }
 
     void ConsumeFuelIfNeeded()
@@ -44,15 +43,10 @@ public class PlayerController : MonoBehaviour
             bool shouldConsumeFuel = Time.time - accelerationStartTime > 0.5;
             if (shouldConsumeFuel)
             {
-                fuel -= Input.GetKey(KeyCode.LeftShift) ? fuelConsumptionAmountInBoost : fuelConsumptionAmount;
+                GameStats.fuel -= Input.GetKey(KeyCode.LeftShift) ? fuelConsumptionAmountInBoost : fuelConsumptionAmount;
                 accelerationStartTime = Time.time;
             }
         }
-    }
-
-    public int GetFuel()
-    {
-        return fuel;
     }
 
     void Update()
@@ -80,9 +74,9 @@ public class PlayerController : MonoBehaviour
         }
 
         ConsumeFuelIfNeeded();
-        if (fuel <= 0) {
+        if (GameStats.fuel <= 0) {
             GetComponent<PlayerHealth>().ResetToStart();
-            fuel = GameStats.fuel;
+            GameStats.fuel = startingFuel;
         }
     }
 
