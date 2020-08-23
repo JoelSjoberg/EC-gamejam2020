@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     int fuelConsumptionAmountInBoost;
     int fuel; 
     
+    [SerializeField]
+    ParticleSystem particles;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -29,6 +32,7 @@ public class PlayerController : MonoBehaviour
         boostDrag = drag / 4.0f;
         fuelConsumptionAmountInBoost = fuelConsumptionAmount * 2;
         fuel = GameStats.fuel;
+        particles.gameObject.SetActive(false);
     }
 
     void ConsumeFuelIfNeeded()
@@ -53,6 +57,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
+            particles.gameObject.SetActive(true);
             accelerationStartTime = Time.time;
             maxSpeed = maxBoostSpeed;
             rb.drag = boostDrag;
@@ -60,6 +65,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
+            particles.gameObject.SetActive(false);
             maxSpeed = speedBeforeBoost;
             rb.drag = drag;
         }
