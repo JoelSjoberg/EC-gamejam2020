@@ -59,6 +59,10 @@ public class PlayerController : MonoBehaviour
             maxSpeed = speedBeforeBoost;
             rb.drag = drag;
         }
+        
+        // Rotate player in direction of movement, taken from https://answers.unity.com/questions/1409883/how-to-make-character-rotate-in-the-direction-of-m.html
+        float angle = Mathf.Atan2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
         ConsumeFuelIfNeeded();
         if (fuel <= 0) {
