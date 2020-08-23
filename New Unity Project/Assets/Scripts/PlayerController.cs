@@ -61,6 +61,10 @@ public class PlayerController : MonoBehaviour
         }
 
         ConsumeFuelIfNeeded();
+        if (fuel <= 0) {
+            GetComponent<PlayerHealth>().ResetToStart();
+            fuel = GameStats.fuel;
+        }
     }
 
     void FixedUpdate()

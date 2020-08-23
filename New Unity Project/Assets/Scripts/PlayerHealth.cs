@@ -19,9 +19,8 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void ResetToStart()
+    public void ResetToStart()
     {
-        Debug.Log("Touched DANGER!!!");
         GameStats.hp -= 1;
 
         // Dead if hp <= 0
@@ -34,7 +33,6 @@ public class PlayerHealth : MonoBehaviour
             // Return player to start
             transform.position = startpos;
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-
         }
     }
 
