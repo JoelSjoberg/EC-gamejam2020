@@ -40,9 +40,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4615090557103749988}
   - component: {fileID: 4615090557103749989}
-  - component: {fileID: 4615090557103749986}
   - component: {fileID: 4615090557103749987}
   - component: {fileID: 4615090557103749984}
+  - component: {fileID: 7177803583469341385}
   m_Layer: 0
   m_Name: RotationalAsteroid
   m_TagString: Dangerous
@@ -105,7 +105,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 35dd3878cab239449bf8728ec6c05244, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -116,32 +116,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4615090557103749986
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4615090557103749985}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.2, y: 0.2}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.2}
-  m_EdgeRadius: 0
 --- !u!50 &4615090557103749987
 Rigidbody2D:
   serializedVersion: 4
@@ -177,3 +151,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   center: {fileID: 4615090556874621868}
   degrees: 20
+--- !u!60 &7177803583469341385
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4615090557103749985}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.25, y: 0.25}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.08306618, y: 0.051682662}
+      - {x: 0.023637773, y: 0.09555287}
+      - {x: -0.025040055, y: 0.09401707}
+      - {x: -0.05398636, y: 0.08934293}
+      - {x: -0.100427344, y: 0.05008011}
+      - {x: -0.11348153, y: -0.0132545475}
+      - {x: -0.09728899, y: -0.03682556}
+      - {x: -0.025373936, y: -0.090811945}
+      - {x: 0.037593458, y: -0.08159719}
+      - {x: 0.098758034, y: -0.020566227}
+      - {x: 0.10106168, y: 0.026642656}
