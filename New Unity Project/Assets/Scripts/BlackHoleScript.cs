@@ -14,17 +14,11 @@ public class BlackHoleScript : MonoBehaviour
 
     public List<GameObject> orbiters;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        mass = 1e13f; // With this you can still escape and "wrap around" the black hole
-    }
-
     void OnTriggerStay2D(Collider2D collider2D) {
         Vector2 dist = transform.position - collider2D.transform.position;
 
         // object is "consumed" by the hole
-        if (dist.magnitude < 0.01) { 
+        if (dist.magnitude < 0.01 && collider2D.gameObject.tag != "Player") { 
             Destroy(collider2D.gameObject);
             return;
         }
