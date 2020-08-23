@@ -65,8 +65,11 @@ public class PlayerController : MonoBehaviour
         }
         
         // Rotate player in direction of movement, taken from https://answers.unity.com/questions/1409883/how-to-make-character-rotate-in-the-direction-of-m.html
-        float angle = Mathf.Atan2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        if(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).magnitude > 0f)
+        {
+            float angle = Mathf.Atan2(-Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        }
 
         ConsumeFuelIfNeeded();
         if (fuel <= 0) {
