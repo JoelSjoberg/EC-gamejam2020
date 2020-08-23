@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField]
     ParticleSystem particles;
+    
 
     void Start()
     {
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
         fuelConsumptionAmountInBoost = fuelConsumptionAmount * 2;
         fuel = GameStats.fuel;
         particles.gameObject.SetActive(false);
+        
     }
 
     void ConsumeFuelIfNeeded()

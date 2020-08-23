@@ -17,10 +17,14 @@ public class PlayerHealth : MonoBehaviour
     BoxCollider2D boxCollider;
     Rigidbody2D rb;
 
+    [SerializeField]
+    ParticleSystem smog;
+
     private void Start() {
         startpos = transform.position;
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
+        smog.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -44,6 +48,8 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) 
     {
+        smog.gameObject.SetActive(true);
+        smog.Play();
         if (other.gameObject.tag == "Dangerous")
         {
             ResetToStart();
@@ -74,6 +80,8 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.transform.tag == "Dangerous") { // Some are only triggers, such as black holes
+            smog.gameObject.SetActive(true);
+            smog.Play();
             ResetToStart();
         }
 
