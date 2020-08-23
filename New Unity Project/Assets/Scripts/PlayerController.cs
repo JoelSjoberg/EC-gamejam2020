@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     public int fuelConsumptionAmount = 1;
     int fuelConsumptionAmountInBoost;
-    int fuel; 
+    public int fuel; 
     
     [SerializeField]
     ParticleSystem particles;
