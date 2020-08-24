@@ -89,6 +89,10 @@ public class PlayerHealth : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
+        if (movingBack) {
+            return; // Should trigger anyhting when moving back
+        }
+
         if (other.transform.tag == "Dangerous") { // Some are only triggers, such as black holes
             smog.gameObject.SetActive(true);
             smog.Play();
