@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-
     Vector2 startpos;
 
+    int startingFuel;
 
     // Things needed for the player to lerp back to starting position
     bool movingBack = false;
@@ -27,6 +27,8 @@ public class PlayerHealth : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         smog.gameObject.SetActive(false);
+
+        startingFuel = GetComponent<PlayerController>().startingFuel;
     }
 
     private void Update()
@@ -45,6 +47,10 @@ public class PlayerHealth : MonoBehaviour
                 rb.isKinematic = false;
                 boxCollider.isTrigger = false;
             }
+
+            // This is a hotfix so that the player cannot accidentally consume fuel while travelling back
+            // Since it is possible to hold down the movement keys and consume fuel while moving back. 
+            GameStats.fuel = startingFuel;
         }
     }
 
@@ -61,6 +67,7 @@ public class PlayerHealth : MonoBehaviour
     public void ResetToStart()
     {
         GameStats.hp -= 1;
+        GameStats.fuel = startingFuel;
 
         // Dead if hp <= 0
         if (GameStats.hp <= 0)
