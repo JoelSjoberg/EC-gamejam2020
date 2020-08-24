@@ -101,6 +101,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (other.transform.tag == "Checkpoint") 
         {
+            GameStats.fuel += 7;
             Debug.Log("Checkpoint!");
             startpos = other.transform.position;
         }

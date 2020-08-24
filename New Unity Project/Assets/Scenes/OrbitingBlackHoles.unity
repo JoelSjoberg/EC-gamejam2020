@@ -338,6 +338,10 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1646747280}
+    - target: {fileID: 8728941154327614051, guid: ef74b696c47b9c142bd9907917cf2f40, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8728941154327614076, guid: ef74b696c47b9c142bd9907917cf2f40, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -511,7 +515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5964443799605735546, guid: 06023e0f819865142a30976a6e82302d, type: 3}
       propertyPath: startingFuel
-      value: 75
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5964443799605735548, guid: 06023e0f819865142a30976a6e82302d, type: 3}
       propertyPath: m_Name
@@ -691,7 +695,7 @@ PrefabInstance:
       objectReference: {fileID: 1814165553}
     - target: {fileID: 4194994249991188879, guid: c7a224003dc807d41be66812f7683e9d, type: 3}
       propertyPath: orbitingSpeed
-      value: 30
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4194994249991188879, guid: c7a224003dc807d41be66812f7683e9d, type: 3}
       propertyPath: orbiters.Array.data[6]
@@ -728,6 +732,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 4194994249991188872, guid: c7a224003dc807d41be66812f7683e9d, type: 3}
     - {fileID: 1723568883330343960, guid: c7a224003dc807d41be66812f7683e9d, type: 3}
+    - {fileID: 398817677505581652, guid: c7a224003dc807d41be66812f7683e9d, type: 3}
+    - {fileID: 631841354500339191, guid: c7a224003dc807d41be66812f7683e9d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c7a224003dc807d41be66812f7683e9d, type: 3}
 --- !u!1 &904052478 stripped
 GameObject:
@@ -1098,6 +1104,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4646685797633342393, guid: 4704672e77d78c647b11ec34288ecb50, type: 3}
+      propertyPath: orthographic size
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4646685797633342395, guid: 4704672e77d78c647b11ec34288ecb50, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -1552,6 +1562,10 @@ PrefabInstance:
     - target: {fileID: 1050366838398729736, guid: c31910cda06b7e444a729f19daa0ad4a, type: 3}
       propertyPath: m_Name
       value: Goal (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050366838398729740, guid: c31910cda06b7e444a729f19daa0ad4a, type: 3}
+      propertyPath: nextLevel
+      value: RotatorSpeedway
       objectReference: {fileID: 0}
     - target: {fileID: 1050366838398729742, guid: c31910cda06b7e444a729f19daa0ad4a, type: 3}
       propertyPath: m_LocalPosition.x

@@ -23,4 +23,28 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/end.unity
     guid: f5de35ce7b3d14e41b181660ce164bba
+  - enabled: 1
+    path: Assets/Scenes/WormHole1.unity
+    guid: 8470863055135ee42b025f7b655e02e8
+  - enabled: 1
+    path: Assets/Scenes/RotatorSpeedway.unity
+    guid: 49cf76b47ae16374ea6d71d543a57507
+  - enabled: 1
+    path: Assets/Scenes/AsteroidField.unity
+    guid: 7e5fbba54d5a2de4891bb41d0e75e105
+  - enabled: 1
+    path: Assets/Scenes/BlackHoleMaddness.unity
+    guid: c1ebf6cb4c409e945adb15e4e0fe7120
+  - enabled: 1
+    path: Assets/Scenes/DragRace.unity
+    guid: 89f1331cf78ec8b42a06ba6ab0327aa5
+  - enabled: 1
+    path: Assets/Scenes/Highway1.unity
+    guid: c7ad761fb881d0644b9ebbfc96a49f4a
+  - enabled: 1
+    path: Assets/Scenes/JumpOrDie.unity
+    guid: d38c16ac7c83f2b42a62ad11f7ec332c
+  - enabled: 1
+    path: Assets/Scenes/OrbitingBlackHoles.unity
+    guid: 201ab58c20c681b4a9f8716f33f34c06
   m_configObjects: {}
