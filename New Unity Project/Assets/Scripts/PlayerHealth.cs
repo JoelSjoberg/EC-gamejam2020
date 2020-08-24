@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -64,6 +66,7 @@ public class PlayerHealth : MonoBehaviour
         if (GameStats.hp <= 0)
         {
             // redirect to game over
+            SceneManager.LoadScene("gameover");
         }
         else
         {
