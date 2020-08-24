@@ -11,7 +11,6 @@ public class BlackHoleScript : MonoBehaviour
     public float mass; // This mass is only used for calculation of gravitational acceleration and not actually in physics
     public float orbitingSpeed = 20; // Angles per second
 
-
     public List<GameObject> orbiters;
 
     void OnTriggerStay2D(Collider2D collider2D) {
